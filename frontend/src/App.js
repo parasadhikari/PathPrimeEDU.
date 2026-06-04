@@ -24,6 +24,7 @@ import CreateNotice from "./pages/CreateNotice";
 import NoticeBoard from "./pages/NoticeBoard";
 import StudentRoute from "./components/StudentRoute";
 import Profile from "./pages/Profile";
+import AdminDashboard from "./pages/AdminDashboard";
 
 function App() {
 
@@ -133,7 +134,10 @@ function App() {
             </StudentRoute>
           }
         />
-
+        <Route
+          path="/admin-dashboard"
+          element={<AdminDashboard />}
+        />
 
 
 

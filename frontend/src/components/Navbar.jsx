@@ -156,6 +156,17 @@ const Navbar = () => {
                                     >
                                         👤 Profile
                                     </Link>
+
+                                    {user?.role === "admin" && (
+
+                                        <Link
+                                            to="/admin-dashboard"
+                                            className="block px-4 py-3 hover:bg-gray-100"
+                                        >
+                                            ⚙️ Admin Panel
+                                        </Link>
+
+                                    )}
                                     <button
                                         onClick={() =>
                                             setDarkMode(!darkMode)
@@ -290,6 +301,17 @@ const Navbar = () => {
                             >
                                 Dashboard
                             </Link>
+
+                            {user?.role === "admin" && (
+
+                                <Link
+                                    to="/admin-dashboard"
+                                    className="block"
+                                >
+                                    ⚙️ Admin Panel
+                                </Link>
+
+                            )}
 
                             {user?.approved && (
 
