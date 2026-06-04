@@ -21,7 +21,7 @@ const Admissions = () => {
         try {
 
             const res = await axios.get(
-                "http://localhost:5000/api/admission/all"
+                "https://pathprimeedu-backend.onrender.com/api/admission/all"
             );
 
             setAdmissions(res.data);

@@ -19,7 +19,7 @@ const Testimonial = () => {
         try {
 
             await axios.post(
-                "http://localhost:5000/api/testimonial/create",
+                "https://pathprimeedu-backend.onrender.com/api/testimonial/create",
                 {
                     name: user?.name,
                     email: user?.email,

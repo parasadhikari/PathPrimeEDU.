@@ -16,7 +16,7 @@ const Testimonials = () => {
         try {
 
             const res = await axios.get(
-                "http://localhost:5000/api/testimonial/all"
+                "https://pathprimeedu-backend.onrender.com/api/testimonial/all"
             );
 
             setReviews(res.data);

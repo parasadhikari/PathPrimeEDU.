@@ -32,7 +32,7 @@ const Navbar = () => {
         try {
 
             const res = await axios.get(
-                "http://localhost:5000/api/notices"
+                "https://pathprimeedu-backend.onrender.com/api/notices"
             );
 
             const lastVisit =

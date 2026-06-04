@@ -15,7 +15,7 @@ const CreateNotice = () => {
         try {
 
             await axios.post(
-                "http://localhost:5000/api/notices",
+                "https://pathprimeedu-backend.onrender.com/api/notices",
                 {
                     title,
                     message,

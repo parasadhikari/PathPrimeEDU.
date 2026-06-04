@@ -23,7 +23,7 @@ const Notes = () => {
         try {
 
             const res = await axios.get(
-                "http://localhost:5000/api/notes"
+                "https://pathprimeedu-backend.onrender.com/api/notes"
             );
 
             setNotes(
@@ -272,7 +272,7 @@ const Notes = () => {
 
                                         <a
 
-                                            href={`http://localhost:5000/uploads/${note.pdf}`}
+                                            href={`https://pathprimeedu-backend.onrender.com/uploads/${note.pdf}`}
 
                                             target="_blank"
 

@@ -17,7 +17,7 @@ const TestimonialAdmin = () => {
     const fetchReviews = async () => {
 
         const res = await axios.get(
-            "http://localhost:5000/api/testimonial/admin"
+            "https://pathprimeedu-backend.onrender.com/api/testimonial/admin"
         );
 
         setReviews(res.data);
@@ -31,7 +31,7 @@ const TestimonialAdmin = () => {
 
         await axios.put(
 
-            `http://localhost:5000/api/testimonial/status/${id}`,
+            `https://pathprimeedu-backend.onrender.com/api/testimonial/status/${id}`,
 
             { status }
 

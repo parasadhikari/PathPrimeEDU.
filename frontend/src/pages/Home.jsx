@@ -25,7 +25,7 @@ const Home = () => {
         try {
 
             const res = await axios.get(
-                "http://localhost:5000/api/notices"
+                "https://pathprimeedu-backend.onrender.com/api/notices"
             );
 
             if (res.data.length > 0) {
@@ -57,7 +57,7 @@ const Home = () => {
             try {
 
                 const res = await axios.get(
-                    "http://localhost:5000/api/stats"
+                    "https://pathprimeedu-backend.onrender.com/api/stats"
                 );
 
                 setStats(res.data);

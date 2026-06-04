@@ -26,7 +26,7 @@ const Dashboard = () => {
         try {
 
             const res = await axios.get(
-                "http://localhost:5000/api/admission/count"
+                "https://pathprimeedu-backend.onrender.com/api/admission/count"
             );
 
             setAdmissionCount(res.data.count);
@@ -44,7 +44,7 @@ const Dashboard = () => {
         try {
 
             const res = await axios.get(
-                "http://localhost:5000/api/notices"
+                "https://pathprimeedu-backend.onrender.com/api/notices"
             );
 
             if (res.data.length > 0) {

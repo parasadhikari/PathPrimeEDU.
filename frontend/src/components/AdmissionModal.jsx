@@ -18,7 +18,7 @@ const handleSubmit = async (e) => {
 
         const res = await axios.post(
 
-            "http://localhost:5000/api/admission/create",
+            "https://pathprimeedu-backend.onrender.com/api/admission/create",
 
             {
 

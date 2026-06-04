@@ -29,7 +29,7 @@ const UploadNotes = () => {
 
             const res = await axios.post(
 
-                "http://localhost:5000/api/notes/upload",
+                "https://pathprimeedu-backend.onrender.com/api/notes/upload",
 
                 formData,
 

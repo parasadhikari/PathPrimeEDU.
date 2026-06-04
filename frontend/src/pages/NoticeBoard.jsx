@@ -29,7 +29,7 @@ const NoticeBoard = () => {
         try {
 
             const res = await axios.get(
-                "http://localhost:5000/api/notices"
+                "https://pathprimeedu-backend.onrender.com/api/notices"
             );
 
             setNotices(res.data);
@@ -52,7 +52,7 @@ const NoticeBoard = () => {
 
             await axios.put(
 
-                `http://localhost:5000/api/notices/like/${id}`,
+                `https://pathprimeedu-backend.onrender.com/api/notices/like/${id}`,
 
                 {
                     email: user.email
@@ -75,7 +75,7 @@ const NoticeBoard = () => {
         try {
 
             const res = await axios.get(
-                `http://localhost:5000/api/comments/${noticeId}`
+                `https://pathprimeedu-backend.onrender.com/api/comments/${noticeId}`
             );
 
             setComments(prev => ({
@@ -118,7 +118,7 @@ const NoticeBoard = () => {
                 );
 
             await axios.post(
-                "http://localhost:5000/api/comments",
+                "https://pathprimeedu-backend.onrender.com/api/comments",
                 {
                     noticeId,
                     userName: user.name,

@@ -23,7 +23,7 @@ const PYQ = () => {
         try {
 
             const res = await axios.get(
-                "http://localhost:5000/api/notes/pyqs"
+                "https://pathprimeedu-backend.onrender.com/api/notes/pyqs"
             );
 
             setPyqs(
@@ -272,7 +272,7 @@ const PYQ = () => {
 
                                         <a
 
-                                            href={`http://localhost:5000/uploads/${pyq.pdf}`}
+                                            href={`https://pathprimeedu-backend.onrender.com/uploads/${pyq.pdf}`}
 
                                             target="_blank"
 
