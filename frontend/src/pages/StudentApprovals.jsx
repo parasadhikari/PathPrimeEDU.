@@ -48,51 +48,79 @@ const StudentApprovals = () => {
 
         <div className="p-10">
 
-            <h1 className="text-3xl font-bold mb-6">
 
-                Student Approvals
+            <div className="p-10 max-w-7xl mx-auto">
 
-            </h1>
+                <h1 className="text-3xl font-bold mb-6">
+                    Student Approvals
+                </h1>
 
-            {users.map((user) => (
+                <table className="w-full border border-gray-300">
+                    <thead>
+                        <tr className="bg-gray-200">
+                            <th className="border p-3">Name</th>
+                            <th className="border p-3">Email</th>
+                            <th className="border p-3">Approved</th>
+                            <th className="border p-3">Actions</th>
+                        </tr>
+                    </thead>
 
-                <div
-                    key={user._id}
-                    className="border p-4 mb-4 rounded"
-                >
+                    <tbody>
 
-                    <h3>{user.name}</h3>
+                        {users.map((user) => (
 
-                    <p>{user.email}</p>
-                    <p>
-                        Approved:
-                        {" "}
-                        <strong>
-                            {user.approved ? "Yes" : "No"}
-                        </strong>
-                    </p>
+                            <tr key={user._id}>
 
-                    <div className="mt-2 flex gap-2">
+                                <td className="border p-3">
+                                    {user.name}
+                                </td>
 
-                        <button
-                            onClick={() => approveUser(user._id)}
-                            className="bg-green-600 text-white px-4 py-2 rounded"
-                        >
-                            Approve
-                        </button>
+                                <td className="border p-3">
+                                    {user.email}
+                                </td>
 
-                        <button
-                            onClick={() => rejectUser(user._id)}
-                            className="bg-red-600 text-white px-4 py-2 rounded"
-                        >
-                            Reject
-                        </button>
+                                <td className="border p-3 text-center">
 
-                    </div>
+                                    {user.approved
+                                        ? "✅ Yes"
+                                        : "❌ No"}
 
-                </div>
+                                </td>
 
-            ))}
+                                <td className="border p-3 flex gap-2 justify-center">
+
+                                    <button
+                                        onClick={() => approveUser(user._id)}
+                                        className="bg-green-600 text-white px-3 py-1 rounded"
+                                    >
+                                        Approve
+                                    </button>
+
+                                    <button
+                                        onClick={() => rejectUser(user._id)}
+                                        className="bg-red-600 text-white px-3 py-1 rounded"
+                                    >
+                                        Reject
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+                        ))}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            );
+
+
+
+
+
 
         </div>
 

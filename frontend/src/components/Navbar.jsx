@@ -167,14 +167,7 @@ const Navbar = () => {
                                         </Link>
 
                                     )}
-                                    <button
-                                        onClick={() =>
-                                            setDarkMode(!darkMode)
-                                        }
-                                        className="bg-white/10 px-3 py-2 rounded-xl hover:bg-white/20 transition"
-                                    >
-                                        {darkMode ? "☀️" : "🌙"}
-                                    </button>
+
                                     {user?.approved && (
 
                                         <Link
@@ -196,7 +189,14 @@ const Navbar = () => {
                                         </Link>
 
                                     )}
-
+                                    <button
+                                        onClick={() => setDarkMode(!darkMode)}
+                                        className="w-full text-left px-4 py-3 hover:bg-gray-100"
+                                    >
+                                        {darkMode
+                                            ? "☀️ Light Mode"
+                                            : "🌙 Dark Mode"}
+                                    </button>
                                     <button
                                         onClick={handleLogout}
                                         className="w-full text-left px-4 py-3 hover:bg-red-50 text-red-600"
@@ -299,7 +299,7 @@ const Navbar = () => {
                                 to="/dashboard"
                                 className="block"
                             >
-                                Dashboard
+                              🏠 Dashboard
                             </Link>
 
                             {user?.role === "admin" && (
@@ -319,7 +319,7 @@ const Navbar = () => {
                                     to="/notice-board"
                                     className="block"
                                 >
-                                    Community
+                                   📢 Community
 
                                     {unreadCount > 0 && (
 
@@ -339,7 +339,7 @@ const Navbar = () => {
                                 onClick={handleLogout}
                                 className="block text-left"
                             >
-                                Logout
+                               🚪 Logout
                             </button>
 
                         </>
