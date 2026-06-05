@@ -12,19 +12,25 @@ router.get("/pending-users", async (req, res) => {
 });
 
 // Approve user
-router.put("/status/:id", async (req, res) => {
-
-    const { status } = req.body;
+router.put("/approve/:id", async (req, res) => {
 
     await User.findByIdAndUpdate(
         req.params.id,
-        { status }
+        { approved: true }
     );
 
-    res.json({
-        message: "Status Updated"
-    });
+    res.json({ message: "Approved" });
 
 });
 
+router.put("/reject/:id", async (req, res) => {
+
+    await User.findByIdAndUpdate(
+        req.params.id,
+        { approved: false }
+    );
+
+    res.json({ message: "Rejected" });
+
+});
 module.exports = router;

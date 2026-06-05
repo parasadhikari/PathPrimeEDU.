@@ -27,23 +27,22 @@ const StudentApprovals = () => {
     };
 
 
-    const updateStatus = async (id, status) => {
+    const approveUser = async (id) => {
 
-        try {
+        await axios.put(
+            `https://pathprimeedu-backend.onrender.com/api/admin/approve/${id}`
+        );
 
-            await axios.put(
-                `https://pathprimeedu-backend.onrender.com/api/admin/status/${id}`,
-                { status }
-            );
+        fetchUsers();
+    };
 
-            fetchUsers();
+    const rejectUser = async (id) => {
 
-        } catch (error) {
+        await axios.put(
+            `https://pathprimeedu-backend.onrender.com/api/admin/reject/${id}`
+        );
 
-            console.log(error);
-
-        }
-
+        fetchUsers();
     };
     return (
 
@@ -66,35 +65,24 @@ const StudentApprovals = () => {
 
                     <p>{user.email}</p>
                     <p>
-                        Status:{" "}
-                        <span
-                            className={
-                                user.status === "approved"
-                                    ? "text-green-600 font-bold"
-                                    : user.status === "rejected"
-                                        ? "text-red-600 font-bold"
-                                        : "text-yellow-600 font-bold"
-                            }
-                        >
-                            {user.status || "pending"}
-                        </span>
+                        Approved:
+                        {" "}
+                        <strong>
+                            {user.approved ? "Yes" : "No"}
+                        </strong>
                     </p>
 
                     <div className="mt-2 flex gap-2">
 
                         <button
-                            onClick={() =>
-                                updateStatus(user._id, "approved")
-                            }
+                            onClick={() => approveUser(user._id)}
                             className="bg-green-600 text-white px-4 py-2 rounded"
                         >
                             Approve
                         </button>
 
                         <button
-                            onClick={() =>
-                                updateStatus(user._id, "rejected")
-                            }
+                            onClick={() => rejectUser(user._id)}
                             className="bg-red-600 text-white px-4 py-2 rounded"
                         >
                             Reject
