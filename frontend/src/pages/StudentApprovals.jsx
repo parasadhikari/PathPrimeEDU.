@@ -8,7 +8,7 @@ import axios from "axios";
 const StudentApprovals = () => {
 
     const [users, setUsers] =
-    useState([]);
+        useState([]);
 
     useEffect(() => {
 
@@ -19,23 +19,32 @@ const StudentApprovals = () => {
     const fetchUsers = async () => {
 
         const res =
-        await axios.get(
-            "https://pathprimeedu-backend.onrender.com/api/admin/pending-users"
-        );
+            await axios.get(
+                "https://pathprimeedu-backend.onrender.com/api/admin/pending-users"
+            );
 
         setUsers(res.data);
     };
 
-    const approveUser =
-    async (id) => {
 
-        await axios.put(
-            `https://pathprimeedu-backend.onrender.com/api/admin/approve/${id}`
-        );
+    const updateStatus = async (id, status) => {
 
-        fetchUsers();
+        try {
+
+            await axios.put(
+                `https://pathprimeedu-backend.onrender.com/api/admin/status/${id}`,
+                { status }
+            );
+
+            fetchUsers();
+
+        } catch (error) {
+
+            console.log(error);
+
+        }
+
     };
-
     return (
 
         <div className="p-10">
@@ -56,17 +65,42 @@ const StudentApprovals = () => {
                     <h3>{user.name}</h3>
 
                     <p>{user.email}</p>
+                    <p>
+                        Status:{" "}
+                        <span
+                            className={
+                                user.status === "approved"
+                                    ? "text-green-600 font-bold"
+                                    : user.status === "rejected"
+                                        ? "text-red-600 font-bold"
+                                        : "text-yellow-600 font-bold"
+                            }
+                        >
+                            {user.status || "pending"}
+                        </span>
+                    </p>
 
-                    <button
-                        onClick={() =>
-                            approveUser(
-                                user._id
-                            )
-                        }
-                        className="bg-green-600 text-white px-4 py-2 rounded"
-                    >
-                        Approve
-                    </button>
+                    <div className="mt-2 flex gap-2">
+
+                        <button
+                            onClick={() =>
+                                updateStatus(user._id, "approved")
+                            }
+                            className="bg-green-600 text-white px-4 py-2 rounded"
+                        >
+                            Approve
+                        </button>
+
+                        <button
+                            onClick={() =>
+                                updateStatus(user._id, "rejected")
+                            }
+                            className="bg-red-600 text-white px-4 py-2 rounded"
+                        >
+                            Reject
+                        </button>
+
+                    </div>
 
                 </div>
 

@@ -5,24 +5,26 @@ const User = require("../models/User");
 // Get pending users
 router.get("/pending-users", async (req, res) => {
 
-    const users = await User.find({
-        approved: false
-    });
+   const users = await User.find()
+.sort({ createdAt: -1 });
 
     res.json(users);
 });
 
 // Approve user
-router.put("/approve/:id", async (req, res) => {
+router.put("/status/:id", async (req, res) => {
+
+    const { status } = req.body;
 
     await User.findByIdAndUpdate(
         req.params.id,
-        { approved: true }
+        { status }
     );
 
     res.json({
-        message: "User Approved"
+        message: "Status Updated"
     });
+
 });
 
 module.exports = router;

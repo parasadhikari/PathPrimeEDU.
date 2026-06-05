@@ -27,6 +27,11 @@ role: {
 approved: {
     type: Boolean,
     default: false
+},
+status: {
+    type: String,
+    enum: ["pending", "approved", "rejected"],
+    default: "pending"
 }
 
 
