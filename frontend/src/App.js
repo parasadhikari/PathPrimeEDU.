@@ -25,6 +25,7 @@ import NoticeBoard from "./pages/NoticeBoard";
 import StudentRoute from "./components/StudentRoute";
 import Profile from "./pages/Profile";
 import AdminDashboard from "./pages/AdminDashboard";
+import StudentApprovals from "./pages/StudentApprovals";
 
 function App() {
 
@@ -138,7 +139,10 @@ function App() {
           path="/admin-dashboard"
           element={<AdminDashboard />}
         />
-
+        <Route
+          path="/student-approvals"
+          element={<StudentApprovals />}
+        />
 
 
 

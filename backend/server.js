@@ -15,6 +15,9 @@ const noticeRoutes =
     require("./routes/noticeRoutes");
     const commentRoutes =
 require("./routes/commentRoutes");
+const adminRoutes =
+require("./routes/adminRoutes");
+
 
 
 
@@ -42,7 +45,10 @@ app.use(
     "/api/comments",
     commentRoutes
 );
-
+app.use(
+    "/api/admin",
+    adminRoutes
+);
 
 
 
@@ -55,6 +61,13 @@ app.get("/", (req, res) => {
 });
 
 const PORT = process.env.PORT || 5000;
+
+const fs = require("fs");
+
+console.log(
+  "Uploads folder exists:",
+  fs.existsSync("./uploads")
+);
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
