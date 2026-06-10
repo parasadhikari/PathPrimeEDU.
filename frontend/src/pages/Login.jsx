@@ -70,6 +70,7 @@ const Login = () => {
 
                 <div className="relative">
                     <input
+                        placeholder="Enter Password"
                         type={showPassword ? "text" : "password"}
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
