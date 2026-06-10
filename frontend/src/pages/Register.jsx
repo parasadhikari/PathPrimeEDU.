@@ -91,15 +91,15 @@ const Register = () => {
                         type={showPassword ? "text" : "password"}
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className="w-full border p-2 rounded"
+                        className="w-full border p-3 pr-10 rounded"
                     />
 
                     <button
                         type="button"
                         onClick={() => setShowPassword(!showPassword)}
-                        className="absolute right-3 top-2"
+                        className="absolute right-3 top-3 text-gray-500 hover:text-gray-700"
                     >
-                        {showPassword ? "Hide" : "Show"}
+                        {showPassword ? <FaEyeSlash /> : <FaEye />}
                     </button>
                 </div>
 
