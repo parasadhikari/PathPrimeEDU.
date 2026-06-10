@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 import {
     useNavigate,
@@ -10,6 +11,7 @@ const Login = () => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
 
     const navigate = useNavigate();
 
@@ -38,7 +40,7 @@ const Login = () => {
 
             navigate("/dashboard");
 
-        } catch(error){
+        } catch (error) {
 
             alert(error.response.data.message);
 
@@ -62,17 +64,26 @@ const Login = () => {
                     type="email"
                     placeholder="Enter Email"
                     value={email}
-                    onChange={(e)=>setEmail(e.target.value)}
+                    onChange={(e) => setEmail(e.target.value)}
                     className="w-full border p-3 rounded mb-4"
                 />
 
-                <input
-                    type="password"
-                    placeholder="Enter Password"
-                    value={password}
-                    onChange={(e)=>setPassword(e.target.value)}
-                    className="w-full border p-3 rounded mb-4"
-                />
+                <div className="relative">
+                    <input
+                        type={showPassword ? "text" : "password"}
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        className="w-full border p-2 rounded"
+                    />
+
+                    <button
+                        type="button"
+                        onClick={() => setShowPassword(!showPassword)}
+                        className="absolute right-3 top-2"
+                    >
+                        {showPassword ? "Hide" : "Show"}
+                    </button>
+                </div>
 
                 <button
                     type="submit"
