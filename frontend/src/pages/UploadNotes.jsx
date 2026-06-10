@@ -9,12 +9,17 @@ const UploadNotes = () => {
     const [title, setTitle] = useState("");
     const [subject, setSubject] = useState("");
     const [className, setClassName] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const [pdf, setPdf] = useState(null);
     const [type, setType] = useState("note");
     const handleUpload = async (e) => {
 
         e.preventDefault();
+
+        if (loading) return;
+
+        setLoading(true);
 
         try {
 
@@ -24,15 +29,11 @@ const UploadNotes = () => {
             formData.append("subject", subject);
             formData.append("className", className);
             formData.append("type", type);
-
             formData.append("pdf", pdf);
 
             const res = await axios.post(
-
                 "https://pathprimeedu-backend.onrender.com/api/notes/upload",
-
                 formData,
-
                 {
                     headers: {
                         "Content-Type": "multipart/form-data"
@@ -47,8 +48,18 @@ const UploadNotes = () => {
             console.log(error);
 
             alert("Upload Failed");
+
+        } finally {
+
+            setLoading(false);
+
         }
     };
+
+
+
+
+
 
     return (
 
@@ -184,9 +195,13 @@ const UploadNotes = () => {
 
                     <button
                         type="submit"
-                        className="w-full bg-blue-600 text-white p-3 rounded hover:bg-blue-700"
+                        disabled={loading}
+                        className={`w-full text-white p-3 rounded ${loading
+                                ? "bg-gray-500 cursor-not-allowed"
+                                : "bg-blue-600 hover:bg-blue-700"
+                            }`}
                     >
-                        Upload PDF
+                        {loading ? "Uploading..." : "Upload PDF"}
                     </button>
 
                 </form>
