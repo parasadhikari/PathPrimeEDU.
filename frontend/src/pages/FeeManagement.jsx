@@ -61,6 +61,12 @@ const FeeManagement = () => {
 
             console.log(error);
 
+            console.log(error.response);
+
+            alert(
+                error.response?.data?.message ||
+                "Failed to add student"
+            );
         }
     };
 
@@ -197,11 +203,10 @@ const FeeManagement = () => {
                                 <td className="p-3">
 
                                     <span
-                                        className={`px-3 py-1 rounded text-white ${
-                                            student.status === "Paid"
+                                        className={`px-3 py-1 rounded text-white ${student.status === "Paid"
                                                 ? "bg-green-500"
                                                 : "bg-red-500"
-                                        }`}
+                                            }`}
                                     >
                                         {student.status}
                                     </span>

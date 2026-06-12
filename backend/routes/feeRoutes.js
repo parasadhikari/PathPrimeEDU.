@@ -14,20 +14,24 @@ router.post("/add", async (req, res) => {
 
     try {
 
+        console.log("Received:", req.body);
+
         const fee = await Fee.create(req.body);
+
+        console.log("Saved:", fee);
 
         res.json(fee);
 
     } catch (error) {
 
+        console.log("ERROR:", error);
+
         res.status(500).json({
             message: error.message
         });
-
     }
 
 });
-
 router.get("/", async (req, res) => {
 
     const students =
