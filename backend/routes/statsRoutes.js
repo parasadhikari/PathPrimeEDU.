@@ -1,4 +1,3 @@
-// backend/routes/statsRoutes.js
 
 const express = require("express");
 

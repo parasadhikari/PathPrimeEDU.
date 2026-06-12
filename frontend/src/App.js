@@ -26,6 +26,7 @@ import StudentRoute from "./components/StudentRoute";
 import Profile from "./pages/Profile";
 import AdminDashboard from "./pages/AdminDashboard";
 import StudentApprovals from "./pages/StudentApprovals";
+import FeeManagement from "./pages/FeeManagement";
 
 function App() {
 
@@ -142,6 +143,11 @@ function App() {
         <Route
           path="/student-approvals"
           element={<StudentApprovals />}
+        />
+
+        <Route
+          path="/fees"
+          element={<FeeManagement />}
         />
 
 

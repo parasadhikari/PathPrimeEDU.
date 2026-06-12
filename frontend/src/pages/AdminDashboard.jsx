@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import { useNavigate } from "react-router-dom";
+
+
 
 function AdminDashboard() {
+    const navigate = useNavigate();
     return (
         <div>
             <Navbar />
@@ -53,6 +57,20 @@ function AdminDashboard() {
                             Approve new student registrations
                         </p>
                     </Link>
+
+                    <div
+                        onClick={() => navigate("/fees")}
+                        className="bg-white p-6 rounded-xl shadow-md cursor-pointer hover:shadow-xl transition"
+                    >
+                        <h2 className="text-3xl font-bold text-green-600">
+                            💰
+                        </h2>
+
+                        <p className="text-gray-600 mt-2">
+                            Fee Management
+                        </p>
+                    </div>
+
                 </div>
 
             </div>

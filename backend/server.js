@@ -17,12 +17,18 @@ const noticeRoutes =
 require("./routes/commentRoutes");
 const adminRoutes =
 require("./routes/adminRoutes");
+const feeRoutes =
+require("./routes/feeRoutes");
 
 
 
 
 
 
+app.use(
+    "/api/fees",
+    feeRoutes
+);
 app.use(cors());
 app.use(express.json());
 app.use("/api/auth", authRoutes);
