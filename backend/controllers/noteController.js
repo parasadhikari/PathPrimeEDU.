@@ -15,7 +15,7 @@ exports.uploadNote = async (req, res) => {
             type
         } = req.body;
 
-        const pdf = req.file.filename;
+        const pdf = req.file.path;
 
         const note = await Note.create({
 
@@ -75,7 +75,7 @@ exports.getPyqs = async (req, res) => {
 
         res.status(200).json(pyqs);
 
-    } catch(error){
+    } catch (error) {
 
         res.status(500).json({
             message: error.message
