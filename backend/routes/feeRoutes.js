@@ -4,6 +4,12 @@ const router = express.Router();
 
 const Fee = require("../models/Fee");
 
+router.get("/test", (req, res) => {
+    res.json({
+        message: "Fee route working"
+    });
+});
+
 router.post("/add", async (req, res) => {
 
     try {
