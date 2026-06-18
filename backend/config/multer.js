@@ -4,11 +4,11 @@ const cloudinary = require("./cloudinary");
 
 const storage = new CloudinaryStorage({
     cloudinary: cloudinary,
-    params: {
+    params: async (req, file) => ({
         folder: "pathprimeedu-notes",
-        resource_type: "raw",
-        allowed_formats: ["pdf"]
-    }
+        resource_type: "auto",
+        public_id: Date.now() + "-" + file.originalname.replace(".pdf", "")
+    })
 });
 
 const upload = multer({
