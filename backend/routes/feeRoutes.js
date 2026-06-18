@@ -75,4 +75,30 @@ router.put("/pay/:id", async (req, res) => {
     res.json(student);
 
 });
+
+
+
+router.put(
+    "/month/:id",
+    async (req, res) => {
+
+        const {
+            month,
+            status
+        } = req.body;
+
+        const student =
+            await Fee.findById(
+                req.params.id
+            );
+
+        student.monthlyStatus[
+            month
+        ] = status;
+
+        await student.save();
+
+        res.json(student);
+    }
+);
 module.exports = router;

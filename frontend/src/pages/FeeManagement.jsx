@@ -9,36 +9,60 @@ const FeeManagement = () => {
         studentName: "",
         className: "",
         phone: "",
-        monthlyFee: ""
+        monthlyFee: "",
+        joinDate: "",
+        advanceMonths: 0
     });
 
-    const fetchStudents = async () => {
+const fetchStudents = async () => {
 
-        try {
+    try {
 
-            const res = await axios.get(
-                "https://pathprimeedu-backend.onrender.com/api/fees"
-            );
+        const res = await axios.get(
+            "https://pathprimeedu-backend.onrender.com/api/fees"
+        );
 
-            setStudents(res.data);
+        setStudents(res.data);
 
-        } catch (error) {
+    } catch (error) {
 
-            console.log(error);
+        console.log(error);
 
+    }
+};
+
+const updateMonth = async (
+    id,
+    month,
+    currentStatus
+) => {
+
+    const nextStatus =
+        currentStatus === "paid"
+            ? "unpaid"
+            : "paid";
+
+    await axios.put(
+        `https://pathprimeedu-backend.onrender.com/api/fees/month/${id}`,
+        {
+            month,
+            status: nextStatus
         }
-    };
+    );
 
-    useEffect(() => {
+    fetchStudents();
+};
 
-        fetchStudents();
+useEffect(() => {
 
-    }, []);
+    fetchStudents();
+
+}, []);
 
     const handleAddStudent = async (e) => {
 
         e.preventDefault();
-
+        console.log("Button clicked");
         try {
 
             await axios.post(
@@ -136,7 +160,29 @@ const FeeManagement = () => {
                         }
                         className="border p-3 rounded"
                     />
-
+                    <input
+                        type="date"
+                        value={form.joinDate}
+                        onChange={(e) =>
+                            setForm({
+                                ...form,
+                                joinDate: e.target.value
+                            })
+                        }
+                        className="border p-3 rounded"
+                    />
+                    <input
+                        type="number"
+                        placeholder="Advance Months"
+                        value={form.advanceMonths}
+                        onChange={(e) =>
+                            setForm({
+                                ...form,
+                                advanceMonths: e.target.value
+                            })
+                        }
+                        className="border p-3 rounded"
+                    />
                 </div>
 
                 <button
@@ -157,67 +203,104 @@ const FeeManagement = () => {
 
                             <th className="p-3">Name</th>
                             <th className="p-3">Class</th>
-                            <th className="p-3">Phone</th>
                             <th className="p-3">Fee</th>
-                            <th className="p-3">Paid</th>
-                            <th className="p-3">Pending</th>
-                            <th className="p-3">Status</th>
+                            <th className="p-3">Apr</th>
+                            <th className="p-3">May</th>
+                            <th className="p-3">June</th>
+                            <th className="p-3">July</th>
+                            <th className="p-3">Aug</th>
+                            <th className="p-3">Sep</th>
+                            <th className="p-3">Oct</th>
+                            <th className="p-3">Nov</th>
+                            <th className="p-3">Dec</th>
+                            <th className="p-3">Jan</th>
+                            <th className="p-3">Feb</th>
+                            <th className="p-3">Mar</th>
 
                         </tr>
 
                     </thead>
 
-                    <tbody>
+               <tbody>
 
-                        {students.map((student) => (
+    {students.map((student) => (
 
-                            <tr
-                                key={student._id}
-                                className="border-t text-center"
-                            >
+        <tr
+            key={student._id}
+            className="border-t text-center"
+        >
 
-                                <td className="p-3">
-                                    {student.studentName}
-                                </td>
+            <td className="p-3">
+                {student.studentName}
+            </td>
 
-                                <td className="p-3">
-                                    {student.className}
-                                </td>
+            <td className="p-3">
+                {student.className}
+            </td>
 
-                                <td className="p-3">
-                                    {student.phone}
-                                </td>
+            <td className="p-3">
+                ₹{student.monthlyFee}
+            </td>
 
-                                <td className="p-3">
-                                    ₹{student.monthlyFee}
-                                </td>
+            <td className="p-3">
+                <button
+                    onClick={() =>
+                        updateMonth(
+                            student._id,
+                            "Apr",
+                            student.monthlyStatus?.Apr
+                        )
+                    }
+                >
+                    {
+                        student.monthlyStatus?.Apr === "paid"
+                            ? "✅"
+                            : "❌"
+                    }
+                </button>
+            </td>
 
-                                <td className="p-3">
-                                    ₹{student.totalPaid}
-                                </td>
+            <td className="p-3">
+                <button
+                    onClick={() =>
+                        updateMonth(
+                            student._id,
+                            "May",
+                            student.monthlyStatus?.May
+                        )
+                    }
+                >
+                    {
+                        student.monthlyStatus?.May === "paid"
+                            ? "✅"
+                            : "❌"
+                    }
+                </button>
+            </td>
 
-                                <td className="p-3">
-                                    ₹{student.pendingAmount}
-                                </td>
+            <td className="p-3">
+                <button
+                    onClick={() =>
+                        updateMonth(
+                            student._id,
+                            "Jun",
+                            student.monthlyStatus?.Jun
+                        )
+                    }
+                >
+                    {
+                        student.monthlyStatus?.Jun === "paid"
+                            ? "✅"
+                            : "❌"
+                    }
+                </button>
+            </td>
 
-                                <td className="p-3">
+        </tr>
 
-                                    <span
-                                        className={`px-3 py-1 rounded text-white ${student.status === "Paid"
-                                                ? "bg-green-500"
-                                                : "bg-red-500"
-                                            }`}
-                                    >
-                                        {student.status}
-                                    </span>
+    ))}
 
-                                </td>
-
-                            </tr>
-
-                        ))}
-
-                    </tbody>
+</tbody>
 
                 </table>
 

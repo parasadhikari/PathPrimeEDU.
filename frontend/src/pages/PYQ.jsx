@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Navbar from "../components/Navbar";
+import { Link } from "react-router-dom";
 
 const PYQ = () => {
 
@@ -53,7 +54,7 @@ const PYQ = () => {
     const subjects =
 
         selectedClass === "Class 11" ||
-        selectedClass === "Class 12"
+            selectedClass === "Class 12"
 
             ? [
                 "Physics",
@@ -270,21 +271,24 @@ const PYQ = () => {
 
                                         </p>
 
-                                        <a
+                                        <div className="mt-5 flex gap-2">
 
-                                            href={`https://pathprimeedu-backend.onrender.com/uploads/${pyq.pdf}`}
+                                            <Link
+                                                to={`/pdf-viewer?url=${encodeURIComponent(pyq.pdf)}`}
+                                                className="bg-green-600 text-white px-5 py-2 rounded-lg hover:bg-green-700"
+                                            >
+                                                View PYQ
+                                            </Link>
 
-                                            target="_blank"
-
-                                            rel="noreferrer"
-
-                                            className="inline-block mt-5 bg-green-600 text-white px-5 py-2 rounded-lg hover:bg-green-700"
-
-                                        >
-
-                                            View PYQ
-
-                                        </a>
+                                         
+                                            <a
+                                                href={pyq.pdf}
+                                                download={`${pyq.title}.pdf`}
+                                                className="inline-block mt-2 bg-green-600 text-white px-5 py-2 rounded-lg"
+                                            >
+                                                Download PDF
+                                            </a>
+                                        </div>
 
                                     </div>
 

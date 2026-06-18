@@ -27,6 +27,7 @@ import Profile from "./pages/Profile";
 import AdminDashboard from "./pages/AdminDashboard";
 import StudentApprovals from "./pages/StudentApprovals";
 import FeeManagement from "./pages/FeeManagement";
+import PDFViewer from "./pages/PDFViewer";
 
 function App() {
 
@@ -149,7 +150,10 @@ function App() {
           path="/fees"
           element={<FeeManagement />}
         />
-
+        <Route
+          path="/pdf-viewer"
+          element={<PDFViewer />}
+        />
 
 
       </Routes>
