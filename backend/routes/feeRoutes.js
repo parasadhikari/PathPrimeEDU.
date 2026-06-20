@@ -36,7 +36,7 @@ router.get("/", async (req, res) => {
 
     const students =
         await Fee.find()
-            .sort({ createdAt: -1 });
+            .sort({ joinDate: 1 });
 
     res.json(students);
 

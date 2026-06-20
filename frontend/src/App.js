@@ -1,5 +1,5 @@
-import React from "react";
-
+import React, { useEffect } from "react";
+import { App as CapacitorApp } from "@capacitor/app";
 import {
   BrowserRouter,
   Routes,
@@ -28,9 +28,41 @@ import AdminDashboard from "./pages/AdminDashboard";
 import StudentApprovals from "./pages/StudentApprovals";
 import FeeManagement from "./pages/FeeManagement";
 import PDFViewer from "./pages/PDFViewer";
+import StudentOfMonthAdmin
+  from "./pages/StudentOfMonthAdmin";
 
 function App() {
+  useEffect(() => {
 
+    const listener =
+      CapacitorApp.addListener(
+        "backButton",
+        () => {
+
+          if (
+            window.location.pathname === "/"
+          ) {
+
+            CapacitorApp.exitApp();
+
+          } else {
+
+            window.history.back();
+
+          }
+
+        }
+      );
+
+    return () => {
+
+      listener.then(
+        l => l.remove()
+      );
+
+    };
+
+  }, []);
   return (
 
     <BrowserRouter>
@@ -153,6 +185,10 @@ function App() {
         <Route
           path="/pdf-viewer"
           element={<PDFViewer />}
+        />
+        <Route
+          path="/student-of-month-admin"
+          element={<StudentOfMonthAdmin />}
         />
 
 

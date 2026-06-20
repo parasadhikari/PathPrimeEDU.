@@ -5,12 +5,10 @@ const feeSchema = new mongoose.Schema({
         type: Date,
         required: true
     },
-
-    advanceMonths: {
+    advanceFee: {
         type: Number,
         default: 0
     },
-
     monthlyStatus: {
         Apr: { type: String, default: "unpaid" },
         May: { type: String, default: "unpaid" },
@@ -48,7 +46,9 @@ const feeSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
-
+    advanceFeeDate: {
+        type: Date
+    },
     totalPaid: {
         type: Number,
         default: 0

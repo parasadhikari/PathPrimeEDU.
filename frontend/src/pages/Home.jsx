@@ -88,7 +88,7 @@ const Home = () => {
 
                     <div>
 
-                        <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
+                        <h1 className="text-4xl md:text-4xl font-extrabold leading-tight">
 
                             CBSE Success
 
@@ -387,7 +387,7 @@ const Home = () => {
                                 <img
                                     src="https://randomuser.me/api/portraits/men/32.jpg"
                                     alt="Student"
-                                    className="w-48 h-48 mx-auto rounded-full border-4 border-white shadow-xl"
+                                    className="w-32 h-32 mx-auto rounded-full border-4 border-white shadow-xl"
                                 />
 
                             </div>
@@ -414,7 +414,7 @@ const Home = () => {
 
                                 <div className="mt-6">
 
-                                    <h4 className="text-6xl font-extrabold text-yellow-300">
+                                    <h4 className="text-4xl font-extrabold text-yellow-300">
 
                                         96.4%
 

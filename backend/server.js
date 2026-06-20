@@ -19,7 +19,8 @@ const adminRoutes =
 require("./routes/adminRoutes");
 const feeRoutes =
 require("./routes/feeRoutes");
-
+const studentOfMonthRoutes =
+require("./routes/studentOfMonthRoutes");
 
 
 
@@ -56,7 +57,10 @@ app.use(
     "/api/admin",
     adminRoutes
 );
-
+app.use(
+    "/api/student-of-month",
+    studentOfMonthRoutes
+);
 
 
 mongoose.connect(process.env.MONGO_URI)
