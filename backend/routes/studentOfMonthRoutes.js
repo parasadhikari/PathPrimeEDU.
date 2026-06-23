@@ -1,17 +1,29 @@
 const express = require("express");
 const router = express.Router();
-
+const upload = require("../config/upload");
 const StudentOfMonth =
 require("../models/StudentOfMonth");
 
-router.post("/", async (req, res) => {
+router.post(
+    "/",
+    upload.single("image"),
+    async (req, res) => {
 
     try {
 
-        const student =
-            await StudentOfMonth.create(
-                req.body
-            );
+       const student =
+    await StudentOfMonth.create({
+
+        name: req.body.name,
+        className: req.body.className,
+        percentage: req.body.percentage,
+        achievement: req.body.achievement,
+        quote: req.body.quote,
+        month: req.body.month,
+
+        image: req.file?.path || ""
+
+    });
 
         res.json(student);
 

@@ -10,10 +10,38 @@ import { useNavigate } from "react-router-dom";
 
 
 
+
 const Home = () => {
 
     const [latestNotice, setLatestNotice] = useState(null);
+    const [student, setStudent] = useState(null);
+    useEffect(() => {
 
+        const fetchStudent = async () => {
+
+            try {
+
+                const res = await axios.get(
+                    "https://pathprimeedu-backend.onrender.com/api/student-of-month"
+                );
+
+                if (res.data.length > 0) {
+
+                    setStudent(res.data[0]);
+
+                }
+
+            } catch (error) {
+
+                console.log(error);
+
+            }
+
+        };
+
+        fetchStudent();
+
+    }, []);
     useEffect(() => {
 
         fetchLatestNotice();
@@ -385,7 +413,7 @@ const Home = () => {
                             <div className="p-10 text-center">
 
                                 <img
-                                    src="https://randomuser.me/api/portraits/men/32.jpg"
+                                    src={student?.image}
                                     alt="Student"
                                     className="w-32 h-32 mx-auto rounded-full border-4 border-white shadow-xl"
                                 />
@@ -402,13 +430,13 @@ const Home = () => {
 
                                 <h3 className="text-4xl font-bold mt-6">
 
-                                    Paras Adhikari
+                                   {student?.name}
 
                                 </h3>
 
                                 <p className="mt-3 text-indigo-100 text-xl">
 
-                                    Class 12 PCM
+                                    Class {student?.className}
 
                                 </p>
 
@@ -416,20 +444,20 @@ const Home = () => {
 
                                     <h4 className="text-4xl font-extrabold text-yellow-300">
 
-                                        96.4%
+                                        {student?.percentage}%
 
                                     </h4>
 
                                     <p className="mt-2 text-lg">
 
-                                        Academic Excellence Award
+                                        {student?.achievement}
                                     </p>
 
                                 </div>
 
                                 <blockquote className="mt-8 italic text-indigo-100">
 
-                                    "Consistency and hard work always beat talent."
+                                    {student?.quote}
 
                                 </blockquote>
 

@@ -21,9 +21,23 @@ const StudentOfMonthAdmin = () => {
 
         try {
 
+            const formData = new FormData();
+
+            formData.append("name", form.name);
+            formData.append("className", form.className);
+            formData.append("percentage", form.percentage);
+            formData.append("achievement", form.achievement);
+            formData.append("quote", form.quote);
+            formData.append("month", form.month);
+
+            formData.append(
+                "image",
+                form.image
+            );
+
             await axios.post(
                 "https://pathprimeedu-backend.onrender.com/api/student-of-month",
-                form
+                formData
             );
 
             alert(
@@ -118,12 +132,12 @@ const StudentOfMonthAdmin = () => {
                     />
 
                     <input
-                        placeholder="Image URL"
-                        className="border p-3 rounded"
+                        type="file"
+                        accept="image/*"
                         onChange={(e) =>
                             setForm({
                                 ...form,
-                                image: e.target.value
+                                image: e.target.files[0]
                             })
                         }
                     />
