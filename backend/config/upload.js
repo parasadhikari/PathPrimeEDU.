@@ -6,7 +6,7 @@ const storage = new CloudinaryStorage({
     cloudinary: cloudinary,
     params: async (req, file) => ({
         folder: "pathprimeedu-notes",
-        resource_type: "raw",,
+        resource_type: "raw",
         public_id:
             Date.now() +
             "-" +

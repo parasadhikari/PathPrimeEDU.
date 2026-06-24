@@ -7,7 +7,10 @@ const storage = new CloudinaryStorage({
     params: async (req, file) => ({
         folder: "pathprimeedu-notes",
         resource_type: "raw",
-        public_id: Date.now() + "-" + file.originalname.replace(".pdf", "")
+        public_id:
+            Date.now() +
+            "-" +
+            file.originalname.replace(".pdf", "")
     })
 });
 
