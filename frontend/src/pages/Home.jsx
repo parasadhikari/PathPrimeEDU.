@@ -306,9 +306,8 @@ const Home = () => {
 
                             </span>
 
-                            <h2 className="text-5xl font-bold text-gray-900 mt-3">
-
-                                Paras Adhikari
+                            <h2 className="text-5xl font-bold text-red-600 mt-3">
+                                Paras Adhikari 🚀 TEST VERSION
                             </h2>
 
                             <p className="text-2xl font-semibold text-blue-600 mt-3">
