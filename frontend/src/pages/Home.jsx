@@ -9,8 +9,6 @@ import CountUp from "react-countup";
 import { useNavigate } from "react-router-dom";
 
 
-
-
 const Home = () => {
 
     const [latestNotice, setLatestNotice] = useState(null);
@@ -272,6 +270,154 @@ const Home = () => {
 
 
 
+
+
+
+            <section className="py-20 bg-white">
+
+                <div className="max-w-7xl mx-auto px-6">
+
+                    <div className="grid lg:grid-cols-2 gap-12 items-center">
+
+                        {/* Left Side */}
+
+                        <div className="relative flex justify-center">
+
+                            <div className="absolute w-[420px] h-[420px] border-2 border-blue-100 rounded-full"></div>
+
+                            <div className="absolute w-[500px] h-[500px] border border-blue-50 rounded-full"></div>
+
+                            <img
+                                src="/images/Mentor.jpeg"
+                                alt="Paras Adhikari"
+                                className="w-80 h-80 rounded-full object-cover shadow-2xl border-8 border-white z-10"
+                            />
+
+                        </div>
+
+                        {/* Right Side */}
+
+                        <div>
+
+                            <span className="text-blue-600 font-semibold tracking-wider uppercase">
+
+
+                                Meet Your Mentor
+
+                            </span>
+
+                            <h2 className="text-5xl font-bold text-gray-900 mt-3">
+
+                                Paras Adhikari
+                            </h2>
+
+                            <p className="text-2xl font-semibold text-blue-600 mt-3">
+
+                                Computer Engineer | Full Stack Developer |Programming Mentor
+                            </p>
+
+                            <div className="mt-8 space-y-4 text-lg">
+
+                                <p>
+                                    🎓 B.Tech (Information Technology)
+                                    <br />
+                                    GGSIPU, Delhi
+                                </p>
+
+                                <p>
+                                    👨‍🏫 Teaching students for 5+ years
+                                </p>
+
+                                <p>
+                                    💻 MERN Stack Developer
+                                </p>
+
+                                <p>
+                                    🐍 Python Trainer & Programming Mentor
+                                </p>
+
+                                <p>
+                                    🚀 Passionate about practical learning,
+                                    real-world projects and career guidance.
+                                </p>
+
+                            </div>
+
+                            <div className="mt-8 p-5 bg-blue-50 rounded-xl border-l-4 border-blue-600">
+
+                                <p className="italic text-gray-700">
+
+                                    "My mission is to make technology education
+                                    simple, practical and career-focused for every student."
+
+                                </p>
+
+                            </div>
+
+                            <div className="flex flex-wrap gap-4 mt-8">
+
+                                <a
+                                    href="https://www.linkedin.com/in/paras-adhikari-a10151247/"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold"
+                                >
+                                    LinkedIn
+                                </a>
+
+                                <a
+                                    href="https://github.com/parasadhikari"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="bg-gray-800 text-white px-6 py-3 rounded-lg font-semibold"
+                                >
+                                    GitHub
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section className="pb-20 bg-white">
+
+                <div className="max-w-7xl mx-auto px-6">
+
+                    <div className="grid md:grid-cols-4 gap-6">
+
+                        <div className="bg-blue-50 p-6 rounded-xl text-center">
+                            <h3 className="text-4xl font-bold text-blue-700">5+</h3>
+                            <p>Years Teaching Experience</p>
+                        </div>
+
+                        <div className="bg-green-50 p-6 rounded-xl text-center">
+                            <h3 className="text-4xl font-bold text-green-700">100+</h3>
+                            <p>Students Mentored</p>
+                        </div>
+
+                        <div className="bg-purple-50 p-6 rounded-xl text-center">
+                            <h3 className="text-4xl font-bold text-purple-700">10+</h3>
+                            <p>Projects Built</p>
+                        </div>
+
+                        <div className="bg-yellow-50 p-6 rounded-xl text-center">
+                            <h3 className="text-4xl font-bold text-yellow-700">100%</h3>
+                            <p>Career-Focused Learning</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
             <section className="py-16 bg-white dark:bg-gray-800">
 
                 <div className="max-w-6xl mx-auto px-4">
@@ -430,7 +576,7 @@ const Home = () => {
 
                                 <h3 className="text-4xl font-bold mt-6">
 
-                                   {student?.name}
+                                    {student?.name}
 
                                 </h3>
 
