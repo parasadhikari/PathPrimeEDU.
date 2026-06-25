@@ -30,6 +30,10 @@ import FeeManagement from "./pages/FeeManagement";
 import PDFViewer from "./pages/PDFViewer";
 import StudentOfMonthAdmin
   from "./pages/StudentOfMonthAdmin";
+import PullToRefresh from "react-simple-pull-to-refresh";
+
+
+
 
 function App() {
   useEffect(() => {
@@ -65,137 +69,151 @@ function App() {
   }, []);
   return (
 
-    <BrowserRouter>
+    <PullToRefresh
+      onRefresh={async () => {
 
-      <Routes>
+    await new Promise(resolve =>
+        setTimeout(resolve, 700)
+    );
 
-        <Route
-          path="/"
-          element={<Home />}
-        />
+    window.location.reload();
 
-        <Route
-          path="/login"
-          element={<Login />}
-        />
+}}
+    >
+      <BrowserRouter>
 
-        <Route
-          path="/register"
-          element={<Register />}
-        />
+        <Routes>
 
-        <Route
-          path="/dashboard"
-          element={
-            <Dashboard />
-          }
-        />
+          <Route
+            path="/"
+            element={<Home />}
+          />
 
-        <Route
-          path="/profile"
-          element={
-            <ProtectedRoute>
-              <Profile />
-            </ProtectedRoute>
-          }
-        />
+          <Route
+            path="/login"
+            element={<Login />}
+          />
 
-        <Route
-          path="/courses"
-          element={<Courses />}
-        />
+          <Route
+            path="/register"
+            element={<Register />}
+          />
 
-        <Route
-          path="/notes"
-          element={<Notes />}
-        />
+          <Route
+            path="/dashboard"
+            element={
+              <Dashboard />
+            }
+          />
 
-        <Route
-          path="/pyqs"
-          element={<PYQ />}
-        />
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
+            }
+          />
 
-        <Route
-          path="/upload-notes"
-          element={
-            <ProtectedRoute>
-              <UploadNotes />
-            </ProtectedRoute>
-          }
-        />
+          <Route
+            path="/courses"
+            element={<Courses />}
+          />
 
-        <Route
-          path="/admissions"
-          element={
-            <ProtectedRoute>
-              <Admissions />
-            </ProtectedRoute>
-          }
-        />
+          <Route
+            path="/notes"
+            element={<Notes />}
+          />
 
+          <Route
+            path="/pyqs"
+            element={<PYQ />}
+          />
 
-        <Route
-          path="/testimonial"
-          element={
-            <ProtectedRoute>
-              <Testimonial />
-            </ProtectedRoute>
-          }
-        />
+          <Route
+            path="/upload-notes"
+            element={
+              <ProtectedRoute>
+                <UploadNotes />
+              </ProtectedRoute>
+            }
+          />
 
-
-        <Route
-          path="/testimonial-admin"
-          element={
-            <ProtectedRoute>
-              <TestimonialAdmin />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/create-notice"
-          element={
-            <ProtectedRoute>
-              <CreateNotice />
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/notice-board"
-          element={
-            <StudentRoute>
-              <NoticeBoard />
-            </StudentRoute>
-          }
-        />
-        <Route
-          path="/admin-dashboard"
-          element={<AdminDashboard />}
-        />
-        <Route
-          path="/student-approvals"
-          element={<StudentApprovals />}
-        />
-
-        <Route
-          path="/fees"
-          element={<FeeManagement />}
-        />
-        <Route
-          path="/pdf-viewer"
-          element={<PDFViewer />}
-        />
-        <Route
-          path="/student-of-month-admin"
-          element={<StudentOfMonthAdmin />}
-        />
+          <Route
+            path="/admissions"
+            element={
+              <ProtectedRoute>
+                <Admissions />
+              </ProtectedRoute>
+            }
+          />
 
 
-      </Routes>
+          <Route
+            path="/testimonial"
+            element={
+              <ProtectedRoute>
+                <Testimonial />
+              </ProtectedRoute>
+            }
+          />
 
-      <WhatsAppButton />
-    </BrowserRouter>
+
+          <Route
+            path="/testimonial-admin"
+            element={
+              <ProtectedRoute>
+                <TestimonialAdmin />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/create-notice"
+            element={
+              <ProtectedRoute>
+                <CreateNotice />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/notice-board"
+            element={
+              <StudentRoute>
+                <NoticeBoard />
+              </StudentRoute>
+            }
+          />
+          <Route
+            path="/admin-dashboard"
+            element={<AdminDashboard />}
+          />
+          <Route
+            path="/student-approvals"
+            element={<StudentApprovals />}
+          />
+
+          <Route
+            path="/fees"
+            element={<FeeManagement />}
+          />
+          <Route
+            path="/pdf-viewer"
+            element={<PDFViewer />}
+          />
+          <Route
+            path="/student-of-month-admin"
+            element={<StudentOfMonthAdmin />}
+          />
+
+
+        </Routes>
+
+
+       
+        <WhatsAppButton />
+      </BrowserRouter>
+    </PullToRefresh>
   );
 }
 
