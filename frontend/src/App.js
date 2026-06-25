@@ -30,7 +30,7 @@ import FeeManagement from "./pages/FeeManagement";
 import PDFViewer from "./pages/PDFViewer";
 import StudentOfMonthAdmin
   from "./pages/StudentOfMonthAdmin";
-import PullToRefresh from "react-simple-pull-to-refresh";
+
 
 
 
@@ -69,17 +69,7 @@ function App() {
   }, []);
   return (
 
-    <PullToRefresh
-      onRefresh={async () => {
 
-    await new Promise(resolve =>
-        setTimeout(resolve, 700)
-    );
-
-    window.location.reload();
-
-}}
-    >
       <BrowserRouter>
 
         <Routes>
@@ -213,7 +203,6 @@ function App() {
        
         <WhatsAppButton />
       </BrowserRouter>
-    </PullToRefresh>
   );
 }
 
